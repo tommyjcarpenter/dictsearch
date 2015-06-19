@@ -1,5 +1,12 @@
-def iterate_dictionary(d, path):
-    """see readme.txt"""
+def iterate_dictionary(d, path, squash_single = False):
+    """see readme.txt
+       
+       if squash_single is true, if there is only one item in the final list
+       that would be returned, only the item, instead of a list with one item, is returned
+
+       If anything fails, for example an inner dictionary is not found, 
+       or there are no objects at the path, returns None
+    """
     path_parts = path.split("/")
     return_list = []
     
@@ -24,6 +31,11 @@ def iterate_dictionary(d, path):
                             else: #leaf node
                                 return_list.append(j)
                 sub_dicts = new_sub_dicts
-            return return_list
+            
+            #return 
+            if squash_single and len(return_list) == 1:
+                return return_list[0]
+            else:
+                return return_list if len(return_list) >= 1 else None
         except:
-            return []
+            return None

@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
       name = "dictsearch",
-      version = "1.2",
+      version = "2.0",
       author = "Tommy Carpenter",
       author_email = "tommyjcarpenter@gmail.com",
       url = "https://github.com/tommyjcarpenter/dictsearch",
