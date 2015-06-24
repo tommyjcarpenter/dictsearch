@@ -1,6 +1,6 @@
 PyPi
 ===========================
-https://pypi.python.org/pypi/dictsearch/2.0
+https://pypi.python.org/pypi/dictsearch/
 
 Usage
 ===========================
@@ -48,7 +48,7 @@ Examples
 
 EXAMPLE 1 (all levels are dicts or list of dicts)
 
-    import dictsearch
+    from dictsearch.search import iterate_dictionary
     
     
     d = dict()
@@ -63,15 +63,15 @@ EXAMPLE 1 (all levels are dicts or list of dicts)
     d["A"]["B"][2]["D"]["E"] = "ASDF"
     
     print(d)
-    print( dictsearch.iterate_dictionary(d,"X/Y/Z"))
-    print( dictsearch.iterate_dictionary(d,"A"))
-    print( dictsearch.iterate_dictionary(d,"A/B"))
-    print( dictsearch.iterate_dictionary(d,"A/C"))
-    print( dictsearch.iterate_dictionary(d,"A/B/C"))
-    print( dictsearch.iterate_dictionary(d,"A/B/C/D")) #DOES NOT EXIST; D NOT AFTER PATH "C"
-    print( dictsearch.iterate_dictionary(d,"A/B/D/E")) 
-    print( dictsearch.iterate_dictionary(d,"A/B/E"))   #DOES NOT EXIST; E NOT A SUBPATH OF "B"
-    
+    print(iterate_dictionary(d,"X/Y/Z"))
+    print(iterate_dictionary(d,"A"))
+    print(iterate_dictionary(d,"A/B"))
+    print(iterate_dictionary(d,"A/C"))
+    print(iterate_dictionary(d,"A/B/C"))
+    print(iterate_dictionary(d,"A/B/C/D")) #DOES NOT EXIST; D NOT AFTER PATH "C"
+    print(iterate_dictionary(d,"A/B/D/E")) 
+    print(iterate_dictionary(d,"A/B/E"))   #DOES NOT EXIST; E NOT A SUBPATH OF "B"
+        
     >>
     
     {'A': {'B': [{'C': 123}, {'C': 123}, {'D': {'E': 'ASDF'}}]}}
@@ -87,6 +87,8 @@ EXAMPLE 1 (all levels are dicts or list of dicts)
 
 EXAMPLE 2 (mixed levels)
 
+    from dictsearch.search import iterate_dictionary
+    
     A = dict()
     A["A"] = []
     A["A"].append("1")
@@ -96,7 +98,7 @@ EXAMPLE 2 (mixed levels)
     A["A"].append(dict())
     A["A"][3]["B"] = 123
     print(iterate_dictionary(A, "A/B"))
-    
+        
     >>
     
     [123, 123]
